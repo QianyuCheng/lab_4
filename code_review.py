@@ -23,42 +23,46 @@ from datetime import timedelta
 
 
 def Day_Of_Year(Month, Day_Of_Month, Year):
-    if (Month == 2):
-        Day_Of_Month += 31
-    elif (Month == 3):
-        Day_Of_Month += 59
-    elif (Month == 4):
-        Day_Of_Month += 90
-    elif (Month == 5):
-        Day_Of_Month += 31 + 28 + 31 + 30
-    elif (Month == 6):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31
-    elif (Month == 7):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31 + 30
-    elif (Month == 8):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31 + 30 + 31
-    elif (Month == 9):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31
-    elif (Month == 10):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30
-    elif (Month == 11):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31
-    elif (Month == 12):
-        Day_Of_Month += 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 31
+    Day_Of_Month = 0
+
+    for i in range(1,Month)+1:
+    #find day of the year given the month of the year 
+        if (i == 2):
+            Day_Of_Month += 31
+        if (i == 3):
+            Day_Of_Month += 28
+        if (i == 4):
+            Day_Of_Month += 31
+        if (i == 5):
+            Day_Of_Month += 30
+        if (i == 6):
+            Day_Of_Month += 31
+        if (i == 7):
+            Day_Of_Month += 30
+        if (i == 8):
+            Day_Of_Month += 31
+        if (i == 9):
+            Day_Of_Month += 31
+        if (i == 10):
+            Day_Of_Month += 30
+        if (i == 11):
+            Day_Of_Month += 31
+        if (i == 12):
+            Day_Of_Month += 31
     return Day_Of_Month
 
 
-def leap(y):
-    tmp = str(y)
-    if (tmp[2] == '1' or tmp[2] == '3' or tmp[2] == 5 or tmp[2] == '7' or tmp[2] == '9'):
-        if (tmp[3] == '2' or tmp[3] == '6'):
+def leap(year):
+    four_digit_year = str(year)
+    if (four_digit_year[2] == '1' or four_digit_year[2] == '3' or four_digit_year[2] == '5' or four_digit_year[2] == '7' or four_digit_year[2] == '9'): # 5 is a string not a integer
+        if (four_digit_year[3] == '2' or four_digit_year[3] == '6'):
             return True
         else:
             return False
     else:
-        if (tmp.charAt(2) == '0' and tmp.charAt(3) == '0'):
+        if (four_digit_year.charAt(2) == '0' and four_digit_year.charAt(3) == '0'):
             return False
-        if (tmp[3] == '0' or tmp[3] == '4' or tmp[3] == '8'):
+        if (four_digit_year[3] == '0' or four_digit_year[3] == '4' or four_digit_year[3] == '8'):
             return True
     return False
 
